@@ -1,1 +1,399 @@
-under construction
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Guide & Documentation - Phantom Premium AI Edition</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #141c2e;
+      --card-border: #27354f;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-purple: #a855f7;
+      --accent-cyan: #38bdf8;
+      --btn-bg: #1e293b;
+      --success: #4ade80;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #ab9bf7;
+      background: rgba(171, 155, 247, 0.12);
+      border: 1px solid rgba(171, 155, 247, 0.28);
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      background: linear-gradient(135deg, #ffffff 40%, #c084fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* Interactive Demo Box */
+    .demo-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .demo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .demo-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .live-badge {
+      font-size: 10px;
+      background: rgba(74, 222, 128, 0.15);
+      color: var(--success);
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      font-weight: 600;
+    }
+
+    textarea {
+      width: 100%;
+      height: 90px;
+      background-color: #0b0f19;
+      color: var(--text);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 13px;
+      line-height: 1.4;
+      outline: none;
+      resize: vertical;
+      margin-bottom: 12px;
+      font-family: inherit;
+    }
+
+    textarea:focus {
+      border-color: var(--accent-purple);
+    }
+
+    .demo-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      background-color: var(--btn-bg);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background-color: #334155;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-purple), #7c3aed);
+      border-color: var(--accent-purple);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .demo-result {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      min-height: 18px;
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+
+    .card-icon {
+      font-size: 22px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Tutorial Steps */
+    .steps-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+
+    .steps-section h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: rgba(168, 85, 247, 0.2);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      color: #c084fc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .step-body h4 {
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: #f1f5f9;
+    }
+
+    .step-body p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Security Notice */
+    .security-notice {
+      border-left: 3px solid var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.05);
+      padding: 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 40px;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <span class="badge">Official Documentation</span>
+      <h1>Phantom AI Quick Start Guide</h1>
+      <p class="subtitle">Complete overview and interactive walkthrough for Phantom Premium AI Edition text inspector.</p>
+    </header>
+
+    <!-- Interactive Live Sandbox -->
+    <div class="demo-section">
+      <div class="demo-header">
+        <span class="demo-title">⚡ Interactive Feature Demo</span>
+        <span class="live-badge">Client-Side Sandbox</span>
+      </div>
+      <textarea id="demoText" placeholder="Try typing or paste text with irregular spaces...">This is a sample sentence with   extra   spaces and hidden characters.</textarea>
+      <div class="demo-controls">
+        <button type="button" class="btn btn-primary" id="btnDemoClean">Normalize Spaces</button>
+        <button type="button" class="btn" id="btnDemoUpper">UPPERCASE</button>
+        <button type="button" class="btn" id="btnDemoLower">lowercase</button>
+        <button type="button" class="btn" id="btnDemoTitle">Title Case</button>
+      </div>
+      <div class="demo-result" id="demoResult">Total characters: 73 | Words: 12</div>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">👻</div>
+        <h3>Phantom Character Purge</h3>
+        <p>Instantly detects and strips zero-width spaces (\u200B), non-breaking spaces, and hidden BOM codepoints that disrupt compilers and forms.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <h3>On-Device AI Heuristics</h3>
+        <p>Evaluates text readability via the Flesch Reading Ease index, measures vocabulary complexity, and identifies emotional tone locally in memory.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Zero Permissions Required</h3>
+        <p>Engineered without storage, tabs, or network access. Your text is processed purely in your browser and never leaves your computer.</p>
+      </div>
+    </div>
+
+    <!-- How to use Steps -->
+    <div class="steps-section">
+      <h2>How to Use the Extension in 3 Steps</h2>
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-body">
+          <h4>Open from Toolbar</h4>
+          <p>Click the Phantom AI icon in your browser toolbar to launch the compact workspace.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-body">
+          <h4>Paste or Type Your Text</h4>
+          <p>Insert your content into the inspection box. Words, characters, and phantom spaces are analyzed in real time.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-body">
+          <h4>Execute One-Click Tools</h4>
+          <p>Use Quick Purge to strip hidden spaces, Title Case to capitalize headings, or Copy to paste back anywhere.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy & Compliance -->
+    <div class="security-notice">
+      <strong>Privacy & Security Commitment:</strong> This tool operates with 0 Chrome permissions. All analysis and formatting functions are executed entirely within client-side JavaScript. No user telemetry, browsing activity, or text data is collected or transmitted.
+    </div>
+
+    <footer>
+      Phantom Premium AI Edition &bull; Open Source Documentation &bull; Hosted on GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    const demoText = document.getElementById('demoText');
+    const demoResult = document.getElementById('demoResult');
+    const btnDemoClean = document.getElementById('btnDemoClean');
+    const btnDemoUpper = document.getElementById('btnDemoUpper');
+    const btnDemoLower = document.getElementById('btnDemoLower');
+    const btnDemoTitle = document.getElementById('btnDemoTitle');
+
+    function updateStats() {
+      const text = demoText.value;
+      const words = text.trim() ? text.trim().split(/\s+/).filter(Boolean).length : 0;
+      demoResult.textContent = `Total characters: ${text.length} | Words: ${words}`;
+    }
+
+    btnDemoClean.addEventListener('click', () => {
+      demoText.value = demoText.value.replace(/\s+/g, ' ').trim();
+      updateStats();
+    });
+
+    btnDemoUpper.addEventListener('click', () => {
+      demoText.value = demoText.value.toUpperCase();
+      updateStats();
+    });
+
+    btnDemoLower.addEventListener('click', () => {
+      demoText.value = demoText.value.toLowerCase();
+      updateStats();
+    });
+
+    btnDemoTitle.addEventListener('click', () => {
+      demoText.value = demoText.value.replace(/\b\p{L}+/gu, w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+      updateStats();
+    });
+
+    demoText.addEventListener('input', updateStats);
+  </script>
+</body>
+</html>
